@@ -1,0 +1,83 @@
+<div>
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Comunicação</strong>
+                        </div>
+                        <div class="card-body card-block">
+                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="quality_id" class=" form-control-label"><span style="color:red;">*</span>Qualidade</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <?= $html->select('quality_id', $qualitys, array('class' => 'form-control', 'id' => 'quality_id', 'required' => 'required'), $comunication->getField('quality_id')); ?>
+                                        <small class="form-text text-muted">Qualidade da comunicação</small>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="group_id" class=" form-control-label">Grupos</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <?= $html->select('group_id', $groups, array('class' => 'form-control', 'id' => 'group_id'), $comunication->getField('group_id')); ?>
+                                        <small class="form-text text-muted">Grupo da comunicação</small>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="user_id" class=" form-control-label">Usuários</label>
+                                    </div>
+                                    <div class="col col-md-9">
+                                        <?= $html->select('user_id', $users, array('class' => 'form-control', 'id' => 'user_id'), $comunication->getField('user_id')); ?>
+                                        <small class="form-text text-muted">Usuário da comunicação</small>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="text-input" class=" form-control-label"><span style="color:red;">*</span>Título</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="title" name="title"  value="<?= $comunication->getField('title'); ?>" class="form-control" required>
+                                        <small class="form-text text-muted">Título da comunicação</small>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="text-input" class=" form-control-label">Mensagem</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <textarea id="message" name="message" rows="5" class="form-control">
+                                            <?= $comunication->getField('message'); ?>
+                                        </textarea>
+                                        <small class="form-text text-muted">Mensagem da comunicação</small>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="text-input" class=" form-control-label">Link</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="href" name="href"  value="<?= $comunication->getField('href'); ?>" class="form-control">
+                                        <small class="form-text text-muted">Link para a comunicação</small>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                <input type="hidden" id="comunication_id" name="comunication_id" value="<?= !empty($comunication->getField('comunication_id'))? $comunication->getField('comunication_id'): null; ?>" class="form-control">
+                                    <button type="submit" name="Y29tdW5pY2F0aW9uVXBkYXRl" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-dot-circle-o"></i> Enviar
+                                    </button>
+                                    <button type="reset" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-ban"></i> Limpar
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="copyright">
+                        <p>Copyright © 2020 DOUGGS. All rights reserved.</p>
+                        </div>
+                    </div>
+                </div>

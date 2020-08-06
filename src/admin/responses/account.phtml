@@ -1,0 +1,117 @@
+<div>
+                    <div class="card">
+                        <div class="card-header">
+                            <strong class="card-title">Comunicações</strong>
+                        </div>
+                        <div class="card-body">
+                            <div class="row form-group">
+                                <div class="col-2">
+                                    <a target="_blank" href="<?= _root ?>/admin/comunications/comunicationNew" class="btn btn-sm btn-outline-primary">Novo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Lista</strong><small> Comunicações</small>
+                        </div>
+                        <div class="card-body card-block">
+                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                <div class="row form-group">
+                                    <div class="col-5">
+                                        <div class="form-group">
+                                            <label for="company" class=" form-control-label">Qualidade</label>
+                                            <?= $html->select('quality_id', $qualitys, array('class' => 'form-control', 'id' => 'quality_id')); ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-7">
+                                        <div class="form-group">
+                                            <label for="vat" class=" form-control-label">Grupo</label>
+                                            <?= $html->select('group_id', $groups, array('class' => 'form-control', 'id' => 'group_id')); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="vat" class=" form-control-label">Usuário</label>
+                                            <?= $html->select('user_id', $users, array('class' => 'form-control', 'id' => 'user_id')); ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="vat" class=" form-control-label">Título</label>
+                                            <input type="text" id="title" name="title" placeholder="" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" name="cGVybWlzc2lvbkxpc3Q=" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-dot-circle-o"></i> Buscar
+                                    </button>
+                                    <button type="reset" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-ban"></i> Limpar
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- DATA TABLE-->
+                    <div class="table-responsive m-b-40">
+                        <table class="table table-borderless table-data3">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Qualidade</th>
+                                    <th>Grupo</th>
+                                    <th>Usuário</th>
+                                    <th>Título</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    if(isset($registros)){
+                                        while(!$registros->isEof()){
+                                ?>
+                                <tr>
+                                    <td><a href="<?= _root ?>/admin/comunications/comunicationUpdate/<?= $registros->getField('comunication_id') ?>"><?= $registros->getField('comunication_id'); ?></a></td>
+                                    <td><?= $registros->getField('quality_label') ?></td>
+                                    <td><?= $registros->getField('group_label') ?></td>
+                                    <td><?= $registros->getField('user_name') ?></td>
+                                    <td><?= $registros->getField('title') ?></td>
+                                    <td><a class="btn btn-sm btn-danger" href="<?= _root ?>/admin/comunications/comunicationDelete/<?= $registros->getField('comunication_id') ?>" target="_blank">Delete</a></td>
+                                </tr>
+                                <?php
+                                            $registros->next();
+                                        }
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- END DATA TABLE-->
+
+                    <div class="card">
+                        <div class="card-header">
+                            <strong class="card-title">Ações</strong>
+                        </div>
+                        <div class="card-body">
+                            <div class="row form-group">
+                                <div class="col-2">
+                                    <a target="_blank" href="<?= _root ?>/admin/permissions/permissionNew" class="btn btn-sm btn-outline-primary">Novo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="copyright">
+                            <p>Copyright© 2020 DOUGGS. All rights reserved.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
