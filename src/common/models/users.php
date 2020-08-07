@@ -89,5 +89,28 @@ class users extends model
 
         return $this->manyForOne(new permission\common\models\profiles(), 'profile_id');
     }
+
+    /**
+     * Devolve sql para a realização da busca
+     *
+     * @param string $where
+     * @return string
+     */
+    public function sqlSeek(array $where = null)
+    {
+        if(!isset($where) || empty($where)){
+            $where = array('usr.active = 1');
+        }
+
+        return sprintf("SELECT 
+                usr.*,
+                prf.label as profile_label
+            FROM users AS usr
+            JOIN profiles AS prf ON prf.profile_id = usr.profile_id AND prf.active = 1
+            WHERE
+                %s;",
+            implode(' AND ', $where)
+        );
+    }
 }
 ?>
