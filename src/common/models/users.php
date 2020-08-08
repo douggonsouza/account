@@ -3,6 +3,7 @@
 namespace account\common\models;
 
 use data\model\model;
+use permission\common\models\profiles;
 
 class users extends model
 {
@@ -59,6 +60,12 @@ class users extends model
                     'type'  => 'date',
                     'limit' => 10,
                 ),
+                'document' => array(
+                    'label' => 'Documento',
+                    'pk'    => false,
+                    'type'  => 'varchar',
+                    'limit' => 45,
+                ),
                 'ddd' => array(
                     'label' => 'DDD',
                     'pk'    => false,
@@ -70,6 +77,12 @@ class users extends model
                     'pk'    => false,
                     'type'  => 'varchar',
                     'limit' => 15,
+                ),
+                'image' => array(
+                    'label' => 'Foto',
+                    'pk'    => false,
+                    'type'  => 'varchar',
+                    'limit' => 255,
                 ),
                 'token' => array(
                     'label' => 'Token',
@@ -87,7 +100,7 @@ class users extends model
             return null;
         }
 
-        return $this->manyForOne(new permission\common\models\profiles(), 'profile_id');
+        return $this->manyForOne(new profiles(), 'profile_id');
     }
 
     /**

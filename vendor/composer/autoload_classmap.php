@@ -13,5 +13,6 @@ return array(
     'account\\admin\\controllers\\login' => $baseDir . '/src/admin/controllers/login.php',
     'account\\admin\\controllers\\logout' => $baseDir . '/src/admin/controllers/logout.php',
     'account\\admin\\controllers\\setting' => $baseDir . '/src/admin/controllers/setting.php',
+    'account\\common\\managments\\upload' => $baseDir . '/src/common/managments/upload.php',
     'account\\common\\models\\users' => $baseDir . '/src/common/models/users.php',
 );

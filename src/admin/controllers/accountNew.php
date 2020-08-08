@@ -4,7 +4,10 @@
 
     use driver\control\action;
     use driver\helper\html;
+    use alerts\alerts\alerts;
+    use account\common\managments\uploads;
     use account\common\models\users;
+    use permission\common\models\profiles;
 
     class accountNew extends action
     {
@@ -18,7 +21,23 @@
          */
         public function main(array $info)
         {
-            self::setLayout(self::getHeartwoodLayouts().'/cooladmin1.phtml');
+            // self::setLayout(self::getHeartwoodLayouts().'/cooladmin1.phtml');
+
+            $this->param('html', new html());
+            $this->param('profiles', (new profiles())->dicionary());
+
+            if(array_key_exists('cmVnaXN0ZXJBY2NvdW50',$_POST)){
+                if(isset($_FILES)){
+
+                }
+                $user = new users();
+                $user->populate($_POST);
+                if(!$user->save()){
+                    alerts::set($user->getError(), alerts::BADGE_DANGER);
+                    return $this->view();
+                }
+                alerts::set('Comunicação salva com sucesso.');
+            }
 
             return $this->view();
         }

@@ -18,7 +18,7 @@
          */
         public function main(array $info)
         {
-            // self::setLayout(self::getHeartwoodLayouts().'/cooladmin1.phtml');
+            self::setLayout(self::getHeartwoodLayouts().'/cooladmin1.phtml');
 
             $search = $this->where();
             if(array_key_exists('c2VhcmNoQWNjb3VudA==',$_POST)){

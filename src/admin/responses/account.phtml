@@ -62,7 +62,7 @@
                                         while(!$registros->isEof()){
                                 ?>
                                 <tr>
-                                    <td><a href="<?= _root ?>/admin/accounts/accountUpdate/<?= $registros->getField('user_id') ?>"><?= $registros->getField('user_id'); ?></a></td>
+                                    <td><a href="<?= _root ?>/admin/accounts/account/<?= $registros->getField('user_id') ?>"><?= $registros->getField('user_id'); ?></a></td>
                                     <td><?= $registros->getField('name') ?></td>
                                     <td><?= $registros->getField('email') ?></td>
                                     <td><?= $registros->getField('profile_label') ?></td>

@@ -28,6 +28,7 @@ class ComposerStaticInitf6321e2c00adb3a3b997acf43160023f
         'account\\admin\\controllers\\login' => __DIR__ . '/../..' . '/src/admin/controllers/login.php',
         'account\\admin\\controllers\\logout' => __DIR__ . '/../..' . '/src/admin/controllers/logout.php',
         'account\\admin\\controllers\\setting' => __DIR__ . '/../..' . '/src/admin/controllers/setting.php',
+        'account\\common\\managments\\upload' => __DIR__ . '/../..' . '/src/common/managments/upload.php',
         'account\\common\\models\\users' => __DIR__ . '/../..' . '/src/common/models/users.php',
     );
 
