@@ -10,6 +10,7 @@ return array(
     'account\\admin\\controllers\\accountDelete' => $baseDir . '/src/admin/controllers/accountDelete.php',
     'account\\admin\\controllers\\accountNew' => $baseDir . '/src/admin/controllers/accountNew.php',
     'account\\admin\\controllers\\accountUpdate' => $baseDir . '/src/admin/controllers/accountUpdate.php',
+    'account\\admin\\controllers\\headerAccount' => $baseDir . '/src/admin/controllers/headerAccount.php',
     'account\\admin\\controllers\\login' => $baseDir . '/src/admin/controllers/login.php',
     'account\\admin\\controllers\\logout' => $baseDir . '/src/admin/controllers/logout.php',
     'account\\admin\\controllers\\setting' => $baseDir . '/src/admin/controllers/setting.php',

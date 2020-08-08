@@ -15,6 +15,7 @@ class upload
 	public $Salvos         = array();
 	public $Erros          = array();
 	public $nomeArquivo   = '';
+	public $files          = array();
 
 	private function autoName($type = null, $indice = null)
 	{
@@ -23,66 +24,68 @@ class upload
 		return NULL;
 	}
 
-	public function salveFILES($pasta)
+	public function save($pasta)
 	{
-		// zera arrays
-		$this->Salvos = array();
-		$this->Erros  = array();
-
+		$folder = $_ENV['FOLDERUPLOAD'];
 		$this->setPasta($pasta);
 		if(empty($this->getPasta())){
+			$this->setFiles(array("Não existe pasta de salvamento."), 'error');
 			return false;
 		}
 
 		//SE ARRAY $_FILES VAZIO Nï¿½O Hï¿½ ARQUIVOS A SEREM SALVOS
 		if(!isset($_FILES) || empty($_FILES)){
-			$this->Erros[$input] = "Não existem arquivos para upload.";
+			$this->setFiles(array("Não existem arquivos para upload."), 'error');
 			return false;
 		}
 
 		$indice = 1;
 		foreach($_FILES as $input => $arquivo){
+			$arq = array();
+
 			if($arquivo['size'] >= $this->tamanho){
-				$this->Erros[$input] = "Erro no tamanho máximo do arquivo.";
+				$arq = array('status' => 'false','mensagem' => "Erro no tamanho máximo do arquivo.");
+				$this->setFiles($arq, $input);
 				continue;
 			}
 
 			// existe extensÃ£o
 			$tp = substr($arquivo['name'], strrpos($arquivo['name'],'.')+1,strlen($arquivo['name']));
 			if(!isset($tp) || empty($tp)){
-				$this->Erros[$input] = "Não existe extensão.";
+				$arq = array('status' => 'false','mensagem' => "Não existe extensão.");
+				$this->setFiles($arq, $input);
 				continue;
 			}
 
 			//TIPO VálIDO
 			if(!$this->tipoValido($tp)){
-				$this->Erros[$input] = "Erro no tipo válido para o arquivo";
+				$arq = array('status' => 'false','mensagem' => "Erro no tipo válido para o arquivo");
+				$this->setFiles($arq, $input);
 				continue;
 			}
 
 			// define nome do arquivo
 			$fileName = $this->autoName( $tp, $indice);
 			if(!isset($fileName) || empty($fileName)){
-				$arquivo['input'] = $input;
-				$this->Erros[]    = $arquivo;
+				$arq = array('status' => 'false','mensagem' => "Não existe nome para o arquivo.");
+				$this->setFiles($arq, $input);
 				continue;
 			}
 
 			//MOVER ARQUIVO
-			if(!move_uploaded_file($arquivo['tmp_name'],  $this->pasta.$fileName)){
-				$arquivo['input'] = $input;
-				$this->Erros[]    = $arquivo;
+			if(!move_uploaded_file($arquivo['tmp_name'],  $folder.$this->pasta.'/'.$fileName)){
+				$arq = array('status' => 'false','mensagem' => "Erro na transferência do arquivo.");
+				$this->setFiles($arq, $input);
 				continue;
 			}
 
 			//NOTIFICAR SALVAMENTO CORRETO
-			$arquivo['input']    = $input;
-			$arquivo['saveName'] = $fileName;
-			$this->Salvos[] = $arquivo;
+			$arq = array('status' => 'true','mensagem' => $this->getPasta().'/'.$fileName);
+			$this->setFiles($arq, $input);
 			$indice++;
 		}
 
-		return $this;
+		return $this->getFiles();
 	}
 
 	private function tipoValido($extArquivo)
@@ -149,6 +152,27 @@ class upload
 	{
 		if(isset($pasta) && !empty($pasta)){
 			$this->pasta = $pasta;
+		}
+		return $this;
+	}
+
+	/**
+	 * Get the value of files
+	 */ 
+	public function getFiles()
+	{
+		return $this->files;
+	}
+
+	/**
+	 * Set the value of files
+	 *
+	 * @return  self
+	 */ 
+	public function setFiles(array $value,string $index)
+	{
+		if(isset($value) && !empty($value)){
+			$this->files[$index] = $value;
 		}
 		return $this;
 	}

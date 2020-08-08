@@ -6,6 +6,7 @@
     use driver\helper\html;
     use account\common\models\users;
     use permission\common\models\profiles;
+    use alerts\alerts\alerts;
 
     class accountUpdate extends action
     {

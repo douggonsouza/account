@@ -81,8 +81,10 @@
                                     <div class="col col-md-3">
                                         <label for="image" class=" form-control-label">Foto</label>
                                     </div>
+                                    
                                     <div class="col-12 col-md-9">
                                         <input type="file" id="image" name="image" value="<?= $user->getField('image'); ?>" class="form-control-file">
+                                        <img src="<?= _upload.$user->getField('image'); ?>" width="75" height="100">
                                     </div>
                                 </div>
 

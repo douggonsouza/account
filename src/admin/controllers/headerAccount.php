@@ -5,9 +5,10 @@
     use driver\control\action;
     use driver\helper\html;
     use account\common\models\users;
+    use driver\router\router;
     use alerts\alerts\alerts;
 
-    class accountDelete extends action
+    class headerAccount extends action
     {
         const _LOCAL = __DIR__;
 
@@ -19,8 +20,8 @@
          */
         public function main(array $info)
         {
-            self::setLayout(self::getHeartwoodLayouts().'/cooladmin1.phtml');
-
+            self::setLayout(__DIR__.'/../responses/headerAccount.phtml');
+            
             return $this->view();
         }
 

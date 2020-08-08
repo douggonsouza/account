@@ -5,6 +5,7 @@
     use driver\control\action;
     use driver\helper\html;
     use account\common\models\users;
+    use alerts\alerts\alerts;
 
     class account extends action
     {

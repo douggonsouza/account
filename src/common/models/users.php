@@ -90,6 +90,12 @@ class users extends model
                     'type'  => 'varchar',
                     'limit' => 160,
                 ),
+                'password' => array(
+                    'label' => 'Senha',
+                    'pk'    => false,
+                    'type'  => 'varchar',
+                    'limit' => 90,
+                ),
             ),
         );
     }

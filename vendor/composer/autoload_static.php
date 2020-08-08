@@ -25,6 +25,7 @@ class ComposerStaticInitf6321e2c00adb3a3b997acf43160023f
         'account\\admin\\controllers\\accountDelete' => __DIR__ . '/../..' . '/src/admin/controllers/accountDelete.php',
         'account\\admin\\controllers\\accountNew' => __DIR__ . '/../..' . '/src/admin/controllers/accountNew.php',
         'account\\admin\\controllers\\accountUpdate' => __DIR__ . '/../..' . '/src/admin/controllers/accountUpdate.php',
+        'account\\admin\\controllers\\headerAccount' => __DIR__ . '/../..' . '/src/admin/controllers/headerAccount.php',
         'account\\admin\\controllers\\login' => __DIR__ . '/../..' . '/src/admin/controllers/login.php',
         'account\\admin\\controllers\\logout' => __DIR__ . '/../..' . '/src/admin/controllers/logout.php',
         'account\\admin\\controllers\\setting' => __DIR__ . '/../..' . '/src/admin/controllers/setting.php',

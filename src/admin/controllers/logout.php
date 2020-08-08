@@ -5,6 +5,7 @@
     use driver\control\action;
     use driver\helper\html;
     use account\common\models\users;
+    use alerts\alerts\alerts;
 
     class logout extends action
     {
@@ -18,9 +19,26 @@
          */
         public function main(array $info)
         {
-            self::setLayout(self::getHeartwoodLayouts().'/cooladmin1.phtml');
+            if(!$this->logout()){
+                alerts::set('Não foi possível limpar a sessão do usuário.', alerts::BADGE_DANGER);
+            }
 
-            return $this->view();
+            router::relativeRedirection('/');
+        }
+
+        protected function logout()
+        {
+            if(!isset($_SESSION['login'])){
+                return false;
+            }
+            
+            try{
+                unset($_SESSION['login']);
+            }catch(\Exception $e){
+                return false;
+            }
+
+            return true;
         }
 
     }
