@@ -1,0 +1,101 @@
+                <div>
+                    <div class="card">
+                        <div class="card-header">
+                            <strong class="card-title">Endereços</strong>
+                        </div>
+                        <div class="card-body">
+                            <div class="row form-group">
+                                <div class="col-2">
+                                    <a target="_blank" href="<?= _root ?>/admin/accounts/accountNew" class="btn btn-sm btn-outline-primary">Novo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Lista</strong><small> contas</small>
+                        </div>
+                        <div class="card-body card-block">
+                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                <div class="row form-group">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="vat" class=" form-control-label">Nome</label>
+                                            <input type="text" id="name" name="name" placeholder="" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="vat" class=" form-control-label">E-mail</label>
+                                            <input type="text" id="email" name="email" placeholder="" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" name="c2VhcmNoQWNjb3VudA==" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-dot-circle-o"></i> Buscar
+                                    </button>
+                                    <button type="reset" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-ban"></i> Limpar
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- DATA TABLE-->
+                    <div class="table-responsive m-b-40">
+                        <table class="table table-borderless table-data3">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>E-mail</th>
+                                    <th>Perfil</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    if(isset($registros)){
+                                        while(!$registros->isEof()){
+                                ?>
+                                <tr>
+                                    <td><a href="<?= _root ?>/admin/accounts/account/<?= $registros->getField('user_id') ?>"><?= $registros->getField('user_id'); ?></a></td>
+                                    <td><?= $registros->getField('name') ?></td>
+                                    <td><?= $registros->getField('email') ?></td>
+                                    <td><?= $registros->getField('profile_label') ?></td>
+                                    <td><a class="btn btn-sm btn-danger" href="<?= _root ?>/admin/accounts/accountDelete/<?= $registros->getField('user_id') ?>" target="_blank">Delete</a></td>
+                                </tr>
+                                <?php
+                                            $registros->next();
+                                        }
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- END DATA TABLE-->
+
+                    <div class="card">
+                        <div class="card-header">
+                            <strong class="card-title">Ações</strong>
+                        </div>
+                        <div class="card-body">
+                            <div class="row form-group">
+                                <div class="col-2">
+                                    <a target="_blank" href="<?= _root ?>/admin/accounts/accountNew" class="btn btn-sm btn-outline-primary">Novo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="copyright">
+                            <p>Copyright© 2020 DOUGGS. All rights reserved.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>

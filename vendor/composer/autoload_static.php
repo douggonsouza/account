@@ -25,11 +25,17 @@ class ComposerStaticInitf6321e2c00adb3a3b997acf43160023f
         'account\\admin\\controllers\\accountDelete' => __DIR__ . '/../..' . '/src/admin/controllers/accountDelete.php',
         'account\\admin\\controllers\\accountNew' => __DIR__ . '/../..' . '/src/admin/controllers/accountNew.php',
         'account\\admin\\controllers\\accountUpdate' => __DIR__ . '/../..' . '/src/admin/controllers/accountUpdate.php',
+        'account\\admin\\controllers\\address' => __DIR__ . '/../..' . '/src/admin/controllers/address.php',
+        'account\\admin\\controllers\\addressDelete' => __DIR__ . '/../..' . '/src/admin/controllers/addressDelete.php',
+        'account\\admin\\controllers\\addressNew' => __DIR__ . '/../..' . '/src/admin/controllers/addressNew.php',
+        'account\\admin\\controllers\\addressUpdate' => __DIR__ . '/../..' . '/src/admin/controllers/addressUpdate.php',
         'account\\admin\\controllers\\headerAccount' => __DIR__ . '/../..' . '/src/admin/controllers/headerAccount.php',
+        'account\\admin\\controllers\\headerDesktopAccount' => __DIR__ . '/../..' . '/src/admin/controllers/headerDesktopAccount.php',
         'account\\admin\\controllers\\login' => __DIR__ . '/../..' . '/src/admin/controllers/login.php',
         'account\\admin\\controllers\\logout' => __DIR__ . '/../..' . '/src/admin/controllers/logout.php',
         'account\\admin\\controllers\\setting' => __DIR__ . '/../..' . '/src/admin/controllers/setting.php',
         'account\\common\\managments\\upload' => __DIR__ . '/../..' . '/src/common/managments/upload.php',
+        'account\\common\\models\\addresses' => __DIR__ . '/../..' . '/src/common/models/addresses.php',
         'account\\common\\models\\users' => __DIR__ . '/../..' . '/src/common/models/users.php',
     );
 

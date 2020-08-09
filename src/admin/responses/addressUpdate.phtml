@@ -1,0 +1,110 @@
+                <div>
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Endereço</strong>
+                        </div>
+                        <div class="card-body card-block">
+                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal" onsubmit="return confirmPassword();">
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="name" class=" form-control-label"><span style="color:red;">*</span>Nome</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="name" name="name"  value="<?= $user->getField('name'); ?>" class="form-control" required="required">
+                                        <small class="form-text text-muted">Nome do usuário</small>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="profile_id" class=" form-control-label"><span style="color:red;">*</span>Perfil</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <?= $html->select('profile_id', $profiles, array('class' => 'form-control', 'required' => 'required'), $user->getField('profile_id')); ?>
+                                        <small class="form-text text-muted">Perfil do usuário</small>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="email" class=" form-control-label"><span style="color:red;">*</span>E-mail</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="email" name="email"  value="<?= $user->getField('email'); ?>" class="form-control" required="required">
+                                        <small class="form-text text-muted">E-mail do usuário</small>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="birth" class=" form-control-label">Nascimento</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <div class="md-form md-outline input-with-post-icon datepicker">
+                                            <input type="date" id="birth" name="birth"  value="<?= date('Y-m-d', strtotime($user->getField('birth'))); ?>" class="form-control">
+                                        </div>
+                                        <small class="form-text text-muted">Nascimento do usuário</small>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="document" class=" form-control-label"><span style="color:red;">*</span>Documento</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="document" name="document"  value="<?= $user->getField('document'); ?>" class="form-control" required="required">
+                                        <small class="form-text text-muted">Documento do usuário</small>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="ddd" class=" form-control-label">DDD</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="ddd" name="ddd"  value="<?= $user->getField('ddd'); ?>" class="form-control">
+                                        <small class="form-text text-muted">DDD do usuário</small>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="phone" class=" form-control-label">Fone</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="phone" name="phone" pattern="[0-9]{4}-[0-9]{4,5}" value="<?= $user->getField('phone'); ?>" class="form-control">
+                                        <small class="form-text text-muted">Fone do usuário</small>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="image" class=" form-control-label">Foto</label>
+                                    </div>
+                                    
+                                    <div class="col-12 col-md-9">
+                                        <input type="file" id="image" name="image" value="<?= $user->getField('image'); ?>" class="form-control-file">
+                                        <img src="<?= _upload.$user->getField('image'); ?>" width="75" height="100">
+                                    </div>
+                                </div>
+
+                                <div class="card-footer">
+                                    <input type="hidden" id="user_id" name="user_id" value="<?= $user->getField('user_id'); ?>" class="form-control">
+                                    <button type="submit" name="cmVnaXN0ZXJBY2NvdW50VXBkYXRl" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-dot-circle-o"></i> Enviar
+                                    </button>
+                                    <button type="reset" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-ban"></i> Limpar
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="copyright">
+                        <p>Copyright © 2020 DOUGGS. All rights reserved.</p>
+                        </div>
+                    </div>
+                </div>

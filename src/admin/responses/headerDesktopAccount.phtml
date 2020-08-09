@@ -1,0 +1,39 @@
+                                <div class="account-wrap">
+                                    <div class="account-item clearfix js-item-menu">
+                                        <div class="image">
+                                            <img src="<?= (isset($_SESSION['login']['image']))? _upload.$_SESSION['login']['image']: null; ?>" alt="<?= (isset($_SESSION['login']['name']))? $_SESSION['login']['name']: null; ?>" />
+                                        </div>
+                                        <div class="content">
+                                            <a class="js-acc-btn" href="#"><?= (isset($_SESSION['login']['name']))? $_SESSION['login']['name']: null; ?></a>
+                                        </div>
+                                        <div class="account-dropdown js-dropdown">
+                                            <div class="info clearfix">
+                                                <div class="image">
+                                                    <a href="#">
+                                                        <img src="<?= (isset($_SESSION['login']['image']))? _upload.$_SESSION['login']['image']: null; ?>" alt="<?= (isset($_SESSION['login']['name']))? $_SESSION['login']['name']: null; ?>" />
+                                                    </a>
+                                                </div>
+                                                <div class="content">
+                                                    <h5 class="name">
+                                                        <a href="#"><?= (isset($_SESSION['login']['name']))? $_SESSION['login']['name']: null; ?></a>
+                                                    </h5>
+                                                    <span class="email"><?= (isset($_SESSION['login']['email']))? $_SESSION['login']['email']: null; ?></span>
+                                                </div>
+                                            </div>
+                                            <div class="account-dropdown__body">
+                                                <div class="account-dropdown__item">
+                                                    <a href="<?= _root ?>/admin/accounts/setting/<?= (isset($_SESSION['login']['user_id']))? $_SESSION['login']['user_id']: null; ?>">
+                                                        <i class="zmdi zmdi-settings"></i>Setting</a>
+                                                </div>
+                                                <div class="account-dropdown__item">
+                                                    <a href="<?= _root ?>/admin/accounts/billing/<?= (isset($_SESSION['login']['user_id']))? $_SESSION['login']['user_id']: null; ?>">
+                                                        <i class="zmdi zmdi-money-box"></i>Billing</a>
+                                                </div>
+                                            </div>
+                                            <div class="account-dropdown__footer">
+                                                <a href="<?= _root ?>/admin/accounts/logout">
+                                                    <i class="zmdi zmdi-power"></i>Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>

@@ -1,0 +1,138 @@
+                <div>
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Endereço</strong>
+                        </div>
+                        <div class="card-body card-block">
+                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal" onsubmit="return confirmPassword();">
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="name" class=" form-control-label"><span style="color:red;">*</span>Nome</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="name" name="name"  value="" class="form-control" required="required">
+                                        <small class="form-text text-muted">Nome do usuário</small>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="profile_id" class=" form-control-label"><span style="color:red;">*</span>Perfil</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <?= $html->select('profile_id', $profiles, array('class' => 'form-control', 'required' => 'required')); ?>
+                                        <small class="form-text text-muted">Perfil do usuário</small>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="email" class=" form-control-label"><span style="color:red;">*</span>E-mail</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="email" name="email"  value="" class="form-control" required="required">
+                                        <small class="form-text text-muted">E-mail do usuário</small>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="birth" class=" form-control-label">Nascimento</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <div class="md-form md-outline input-with-post-icon datepicker">
+                                            <input type="date" id="birth" name="birth"  value="" class="form-control">
+                                        </div>
+                                        <small class="form-text text-muted">Nascimento do usuário</small>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="document" class=" form-control-label"><span style="color:red;">*</span>Documento</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="document" name="document"  value="" class="form-control" required="rerquired">
+                                        <small class="form-text text-muted">Documento do usuário</small>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="ddd" class=" form-control-label">DDD</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="ddd" name="ddd"  value="" class="form-control">
+                                        <small class="form-text text-muted">DDD do usuário</small>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="phone" class=" form-control-label">Fone</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="phone" name="phone" pattern="[0-9]{4}-[0-9]{4,5}" value="" class="form-control">
+                                        <small class="form-text text-muted">Fone do usuário</small>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="image" class=" form-control-label">Foto</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="file" id="image" name="image" class="form-control-file">
+                                        <small class="form-text text-muted">Foto do usuário</small>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="password" class=" form-control-label"><span style="color:red;">*</span>Senha</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="password" id="password" name="password"  value="" class="form-control" required="rerquired">
+                                        <small class="form-text text-muted">Senha do usuário</small>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="confirm_password" class=" form-control-label"><span style="color:red;">*</span>Confirmar Senha</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="password" id="confirm_password" name="confirm_password"  value="" class="form-control" required="rerquired">
+                                        <small class="form-text text-muted">Confirma senha do usuário</small>
+                                    </div>
+                                </div>
+
+                                <div class="card-footer">
+                                    <button type="submit" name="cmVnaXN0ZXJBY2NvdW50" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-dot-circle-o"></i> Enviar
+                                    </button>
+                                    <button type="reset" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-ban"></i> Limpar
+                                    </button>
+                                    <script>
+                                        function confirmPassword()
+                                        {
+                                            if($("#password").val() != $("#confirm_password").val()){
+                                                alert('A senha e a confirmação de senha são diferentes.');
+                                                return false;
+                                            }
+                                            return true;
+                                        }
+                                    </script>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="copyright">
+                        <p>Copyright © 2020 DOUGGS. All rights reserved.</p>
+                        </div>
+                    </div>
+                </div>
