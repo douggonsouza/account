@@ -4,6 +4,7 @@
 
     use driver\control\action;
     use driver\helper\html;
+    use account\common\models\addresses;
     use account\common\models\users;
     use alerts\alerts\alerts;
 
@@ -21,15 +22,19 @@
         {
             self::setLayout(self::getHeartwoodLayouts().'/cooladmin1.phtml');
 
+            $this->param('html', new html());
+            $this->param('addresses', new addresses());
+            $this->param('registros', new addresses());
+            $this->param('users', (new users())->dicionary());
+
             $search = $this->where();
-            if(array_key_exists('c2VhcmNoQWNjb3VudA==',$_POST)){
+            if(array_key_exists('c2VhcmNoQWRkcmVzc2Vz',$_POST)){
                 $search = $this->where($_POST);
             }
-    
-            $this->param('registros', new users());
-            $users = (new users())->seek($search);
-            if(!$users->isNew()){
-                $this->param('registros', $users);
+
+            $address = (new addresses())->seek($search);
+            if(!$address->isNew()){
+                $this->param('registros', $address);
             }
 
             return $this->view();
@@ -43,18 +48,18 @@
          */
         protected function where(array $post = null)
         {
-            $search = array('usr.active = 1');
+            $search = array('acc.active = 1');
 
             if(!isset($post) || empty($post)){
                 return $search;
             }
 
-            if(isset($post['name']) && !empty($post['name'])){
-                $search['name'] = "usr.name like '%".$post['name']."%'";
+            if(isset($post['user_id']) && !empty($post['user_id'])){
+                $search['user_id'] = "acc.user_id = ".$post['user_id'];
             }
 
-            if(isset($post['email']) && !empty($post['email'])){
-                $search['email'] = "usr.email like '%".$post['email']."%'";
+            if(isset($post['address']) && !empty($post['address'])){
+                $search['address'] = "acc.address like '%".$post['address']."%'";
             }
 
             return $search;

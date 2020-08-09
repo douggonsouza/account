@@ -4,10 +4,9 @@
 
     use driver\control\action;
     use driver\helper\html;
-    use alerts\alerts\alerts;
-    use account\common\managments\upload;
     use account\common\models\users;
-    use permission\common\models\profiles;
+    use account\common\models\addresses;
+    use alerts\alerts\alerts;
 
     class addressNew extends action
     {
@@ -21,30 +20,20 @@
          */
         public function main(array $info)
         {
-            // self::setLayout(self::getHeartwoodLayouts().'/cooladmin1.phtml');
+            self::setLayout(self::getHeartwoodLayouts().'/cooladmin1.phtml');
 
             $this->param('html', new html());
-            $this->param('profiles', (new profiles())->dicionary());
+            $this->param('addresses', new addresses());
+            $this->param('users', (new users())->dicionary());
 
-            if(array_key_exists('cmVnaXN0ZXJBY2NvdW50',$_POST)){
-                // recebe arquivo
-                if(isset($_FILES)){
-                    $result = (new Upload())->save('/users');
-                    if($result['image']['status']){
-                        $_POST['image'] = $result['image']['mensagem'];
-                    }
-                }
-
-                // hash da senha 
-                $_POST['password'] = md5($_POST['password']);
-
-                $user = new users();
-                $user->populate($_POST);
-                if(!$user->save()){
-                    alerts::set($user->getError(), alerts::BADGE_DANGER);
+            if(array_key_exists('bmV3QWRkcmVzcw==',$_POST)){
+                $address = new addresses();
+                $address->populate($_POST);
+                if(!$address->save()){
+                    alerts::set($address->getError(), alerts::BADGE_DANGER);
                     return $this->view();
                 }
-                alerts::set('Comunicação salva com sucesso.');
+                alerts::set('Endereço salva com sucesso.');
             }
 
             return $this->view();

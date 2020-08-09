@@ -4,93 +4,110 @@
                             <strong>Endereço</strong>
                         </div>
                         <div class="card-body card-block">
-                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal" onsubmit="return confirmPassword();">
+                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="name" class=" form-control-label"><span style="color:red;">*</span>Nome</label>
+                                        <label for="user_id" class=" form-control-label"><span style="color:red;">*</span>Usuário</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="name" name="name"  value="<?= $user->getField('name'); ?>" class="form-control" required="required">
-                                        <small class="form-text text-muted">Nome do usuário</small>
+                                        <?= $html->select('user_id', $users, array('class' => 'form-control', 'required' => 'required'), $address->getField('user_id')); ?>
+                                        <small class="form-text text-muted">Usuário do endereço</small>
                                     </div>
                                 </div>
 
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="profile_id" class=" form-control-label"><span style="color:red;">*</span>Perfil</label>
+                                        <label for="type" class=" form-control-label"><span style="color:red;">*</span>Tipo</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <?= $html->select('profile_id', $profiles, array('class' => 'form-control', 'required' => 'required'), $user->getField('profile_id')); ?>
-                                        <small class="form-text text-muted">Perfil do usuário</small>
+                                        <?= $html->select('type', $addresses::DICIONARY_TYPE, array('class' => 'form-control', 'required' => 'required'), $address->getField('user_id')); ?>
+                                        <small class="form-text text-muted">Tipo de endereço do endereço</small>
                                     </div>
                                 </div>
 
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="email" class=" form-control-label"><span style="color:red;">*</span>E-mail</label>
+                                        <label for="default" class=" form-control-label"><span style="color:red;">*</span>Principal</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="email" name="email"  value="<?= $user->getField('email'); ?>" class="form-control" required="required">
-                                        <small class="form-text text-muted">E-mail do usuário</small>
+                                        <?= $html->select('default', $addresses::DICIONARY_DEFAULT, array('class' => 'form-control', 'required' => 'required'), $address->getField('default')); ?>
+                                        <small class="form-text text-muted">É o principal para o tipo de endereço do usuário</small>
                                     </div>
                                 </div>
 
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="birth" class=" form-control-label">Nascimento</label>
+                                        <label for="address" class=" form-control-label">Endereço</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <div class="md-form md-outline input-with-post-icon datepicker">
-                                            <input type="date" id="birth" name="birth"  value="<?= date('Y-m-d', strtotime($user->getField('birth'))); ?>" class="form-control">
-                                        </div>
-                                        <small class="form-text text-muted">Nascimento do usuário</small>
+                                        <input type="text" id="address" name="address"  value="<?= $address->getField('addrress'); ?>" class="form-control">
+                                        <small class="form-text text-muted">Endereço do usuário</small>
                                     </div>
                                 </div>
 
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="document" class=" form-control-label"><span style="color:red;">*</span>Documento</label>
+                                        <label for="complement" class=" form-control-label">Complemento</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="document" name="document"  value="<?= $user->getField('document'); ?>" class="form-control" required="required">
-                                        <small class="form-text text-muted">Documento do usuário</small>
+                                        <input type="text" id="complement" name="complement"  value="<?= $address->getField('complement'); ?>" class="form-control">
+                                        <small class="form-text text-muted">Complemento do endereço do usuário</small>
                                     </div>
                                 </div>
 
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="ddd" class=" form-control-label">DDD</label>
+                                        <label for="neighborhood" class=" form-control-label">Bairro</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="ddd" name="ddd"  value="<?= $user->getField('ddd'); ?>" class="form-control">
-                                        <small class="form-text text-muted">DDD do usuário</small>
+                                        <input type="text" id="neighborhood" name="neighborhood"  value="<?= $address->getField('neighborhood'); ?>" class="form-control" required="required">
+                                        <small class="form-text text-muted">Bairro do usuário</small>
                                     </div>
                                 </div>
 
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="phone" class=" form-control-label">Fone</label>
+                                        <label for="postcode" class=" form-control-label"><span style="color:red;">*</span>CEP</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="phone" name="phone" pattern="[0-9]{4}-[0-9]{4,5}" value="<?= $user->getField('phone'); ?>" class="form-control">
-                                        <small class="form-text text-muted">Fone do usuário</small>
+                                        <input type="text" id="postcode" name="postcode"  value="<?= $address->getField('postcode'); ?>" class="form-control" required="required">
+                                        <small class="form-text text-muted">CEP do usuário</small>
                                     </div>
                                 </div>
 
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="image" class=" form-control-label">Foto</label>
+                                        <label for="city" class=" form-control-label">Cidade</label>
                                     </div>
-                                    
                                     <div class="col-12 col-md-9">
-                                        <input type="file" id="image" name="image" value="<?= $user->getField('image'); ?>" class="form-control-file">
-                                        <img src="<?= _upload.$user->getField('image'); ?>" width="75" height="100">
+                                        <input type="text" id="city" name="city" value="<?= $address->getField('city'); ?>" class="form-control" >
+                                        <small class="form-text text-muted">Cidade do usuário</small>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="state" class=" form-control-label">Estado</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="state" name="state" maxlength="2" style="width:100px;" value="<?= $address->getField('state'); ?>" class="form-control" >
+                                        <small class="form-text text-muted">Estado do usuário</small>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="country" class=" form-control-label"><span style="color:red;">*</span>País</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="country" name="country"  value="<?= $address->getField('country'); ?>" class="form-control" required="required">
+                                        <small class="form-text text-muted">País do usuário</small>
                                     </div>
                                 </div>
 
                                 <div class="card-footer">
-                                    <input type="hidden" id="user_id" name="user_id" value="<?= $user->getField('user_id'); ?>" class="form-control">
-                                    <button type="submit" name="cmVnaXN0ZXJBY2NvdW50VXBkYXRl" class="btn btn-primary btn-sm">
+                                    <input type="hidden" id="address_id" name="address_id" value="<?= $address->getField('address_id'); ?>" class="form-control">
+                                    <button type="submit" name="dXBkYXRlQWRkcmVzcw==" class="btn btn-primary btn-sm">
                                         <i class="fa fa-dot-circle-o"></i> Enviar
                                     </button>
                                     <button type="reset" class="btn btn-danger btn-sm">

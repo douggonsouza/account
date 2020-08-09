@@ -3,13 +3,57 @@
 namespace account\common\models;
 
 use data\model\model;
-use permission\common\models\profiles;
+use account\common\models\users;
 
 class addresses extends model
 {
-    public $table = 'users';
-    public $key   = 'user_id';
-    public $dicionary = "SELECT user_id as value, name as label FROM users;";
+    const TYPE_ALL      = 'all';
+    const TYPE_BILLING  = 'billing';
+    const TYPE_SHIPPING = 'shipping';
+
+    const DEFAULT_YES = 'yes';
+    const DEFAULT_NO  = 'no';
+
+    const LIST_TYPE = array(
+        self::TYPE_ALL      => 'Ambos',
+        self::TYPE_BILLING  => 'Cobrança',
+        self::TYPE_SHIPPING => 'Entregua'
+    );
+
+    const DICIONARY_TYPE = array(
+        array(
+            'value' => self::TYPE_ALL,
+            'label' => self::LIST_TYPE[self::TYPE_ALL]
+        ),
+        array(
+            'value' => self::TYPE_BILLING,
+            'label' => self::LIST_TYPE[self::TYPE_BILLING]
+        ),
+        array(
+            'value' => self::TYPE_SHIPPING,
+            'label' => self::LIST_TYPE[self::TYPE_SHIPPING]
+        ),
+    );
+
+    const LIST_DEFAULT = array(
+        self::DEFAULT_YES => 'Sim',
+        self::DEFAULT_NO  => 'Não'
+    );
+
+    const DICIONARY_DEFAULT = array(
+        array(
+            'value' => self::DEFAULT_YES,
+            'label' => self::LIST_DEFAULT[self::DEFAULT_YES]
+        ),
+        array(
+            'value' => self::DEFAULT_NO,
+            'label' => self::LIST_DEFAULT[self::DEFAULT_NO]
+        ),
+    );
+
+    public $table = 'addresses';
+    public $key   = 'address_id';
+    public $dicionary = "SELECT address_id as value, address as label FROM addresses;";
 
     /**
      * Evento construtor da classe
@@ -27,86 +71,98 @@ class addresses extends model
     public function visibleColumns()
     {
         return array(
-            'table'   => 'users',
-            'key'     => 'user_id',
+            'table'   => 'addresses',
+            'key'     => 'address_id',
             'columns' => array(
-                'user_id' => array(
+                'address_id' => array(
                     'label' => 'Id',
                     'pk'    => true,
                     'type'  => 'integer',
                     'limit' => 11,
                 ),
-                'name' => array(
+                'user_id' => array(
                     'label' => 'Nome',
-                    'pk'    => false,
-                    'type'  => 'varchar',
-                    'limit' => 120,
-                ),
-                'profile_id' => array(
-                    'label' => 'Perfil',
                     'pk'    => false,
                     'type'  => 'integer',
                     'limit' => 11,
                 ),
-                'email' => array(
-                    'label' => 'E-mail',
-                    'pk'    => false,
-                    'type'  => 'varchar',
-                    'limit' => 255,
-                ),
-                'birth' => array(
-                    'label' => 'Nascimento',
-                    'pk'    => false,
-                    'type'  => 'date',
-                    'limit' => 10,
-                ),
-                'document' => array(
-                    'label' => 'Documento',
-                    'pk'    => false,
-                    'type'  => 'varchar',
-                    'limit' => 45,
-                ),
-                'ddd' => array(
-                    'label' => 'DDD',
-                    'pk'    => false,
-                    'type'  => 'varchar',
-                    'limit' => 3,
-                ),
-                'phone' => array(
-                    'label' => 'Fone',
+                'type' => array(
+                    'label' => 'Tipo',
                     'pk'    => false,
                     'type'  => 'varchar',
                     'limit' => 15,
                 ),
-                'image' => array(
-                    'label' => 'Foto',
+                'default' => array(
+                    'label' => 'Principal',
+                    'pk'    => false,
+                    'type'  => 'varchar',
+                    'limit' => 5,
+                ),
+                'company' => array(
+                    'label' => 'Empresa',
+                    'pk'    => false,
+                    'type'  => 'varchar',
+                    'limit' => 120,
+                ),
+                'address' => array(
+                    'label' => 'Endereço',
                     'pk'    => false,
                     'type'  => 'varchar',
                     'limit' => 255,
                 ),
-                'token' => array(
-                    'label' => 'Token',
+                'address' => array(
+                    'label' => 'Endereço',
                     'pk'    => false,
                     'type'  => 'varchar',
-                    'limit' => 160,
+                    'limit' => 255,
                 ),
-                'password' => array(
-                    'label' => 'Senha',
+                'complement' => array(
+                    'label' => 'Complemento',
                     'pk'    => false,
                     'type'  => 'varchar',
-                    'limit' => 90,
+                    'limit' => 255,
+                ),
+                'neighborhood' => array(
+                    'label' => 'Bairro',
+                    'pk'    => false,
+                    'type'  => 'varchar',
+                    'limit' => 120,
+                ),
+                'postcode' => array(
+                    'label' => 'CEP',
+                    'pk'    => false,
+                    'type'  => 'varchar',
+                    'limit' => 15,
+                ),
+                'city' => array(
+                    'label' => 'Cidade',
+                    'pk'    => false,
+                    'type'  => 'varchar',
+                    'limit' => 45,
+                ),
+                'state' => array(
+                    'label' => 'Estado',
+                    'pk'    => false,
+                    'type'  => 'varchar',
+                    'limit' => 2,
+                ),
+                'country' => array(
+                    'label' => 'País',
+                    'pk'    => false,
+                    'type'  => 'varchar',
+                    'limit' => 45,
                 ),
             ),
         );
     }
 
-    public function profile()
+    public function user()
     {
-        if(empty($this->getField('profile_id'))){
+        if(empty($this->getField('user_id'))){
             return null;
         }
 
-        return $this->manyForOne(new profiles(), 'profile_id');
+        return $this->manyForOne(new profiles(), 'user_id');
     }
 
     /**
@@ -118,14 +174,14 @@ class addresses extends model
     public function sqlSeek(array $where = null)
     {
         if(!isset($where) || empty($where)){
-            $where = array('usr.active = 1');
+            $where = array('acc.active = 1');
         }
 
         return sprintf("SELECT 
-                usr.*,
-                prf.label as profile_label
-            FROM users AS usr
-            JOIN profiles AS prf ON prf.profile_id = usr.profile_id AND prf.active = 1
+                acc.*,
+                usr.name as user_label
+            FROM addresses AS acc
+            JOIN users AS usr ON usr.user_id = acc.user_id AND usr.active = 1
             WHERE
                 %s;",
             implode(' AND ', $where)

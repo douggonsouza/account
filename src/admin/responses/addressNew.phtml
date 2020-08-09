@@ -1,129 +1,117 @@
-                <div>
+<div>
                     <div class="card">
                         <div class="card-header">
                             <strong>Endereço</strong>
                         </div>
                         <div class="card-body card-block">
-                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal" onsubmit="return confirmPassword();">
+                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="name" class=" form-control-label"><span style="color:red;">*</span>Nome</label>
+                                        <label for="user_id" class=" form-control-label"><span style="color:red;">*</span>Usuário</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="name" name="name"  value="" class="form-control" required="required">
-                                        <small class="form-text text-muted">Nome do usuário</small>
+                                        <?= $html->select('user_id', $users, array('class' => 'form-control', 'required' => 'required')); ?>
+                                        <small class="form-text text-muted">Usuário do endereço</small>
                                     </div>
                                 </div>
 
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="profile_id" class=" form-control-label"><span style="color:red;">*</span>Perfil</label>
+                                        <label for="type" class=" form-control-label"><span style="color:red;">*</span>Tipo</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <?= $html->select('profile_id', $profiles, array('class' => 'form-control', 'required' => 'required')); ?>
-                                        <small class="form-text text-muted">Perfil do usuário</small>
+                                        <?= $html->select('type', $addresses::DICIONARY_TYPE, array('class' => 'form-control', 'required' => 'required')); ?>
+                                        <small class="form-text text-muted">Tipo de endereço do endereço</small>
                                     </div>
                                 </div>
 
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="email" class=" form-control-label"><span style="color:red;">*</span>E-mail</label>
+                                        <label for="default" class=" form-control-label"><span style="color:red;">*</span>Principal</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="email" name="email"  value="" class="form-control" required="required">
-                                        <small class="form-text text-muted">E-mail do usuário</small>
+                                        <?= $html->select('default', $addresses::DICIONARY_DEFAULT, array('class' => 'form-control', 'required' => 'required')); ?>
+                                        <small class="form-text text-muted">É o principal para o tipo de endereço do usuário</small>
                                     </div>
                                 </div>
 
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="birth" class=" form-control-label">Nascimento</label>
+                                        <label for="address" class=" form-control-label">Endereço</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <div class="md-form md-outline input-with-post-icon datepicker">
-                                            <input type="date" id="birth" name="birth"  value="" class="form-control">
-                                        </div>
-                                        <small class="form-text text-muted">Nascimento do usuário</small>
+                                        <input type="text" id="address" name="address"  value="" class="form-control">
+                                        <small class="form-text text-muted">Endereço do usuário</small>
                                     </div>
                                 </div>
 
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="document" class=" form-control-label"><span style="color:red;">*</span>Documento</label>
+                                        <label for="complement" class=" form-control-label">Complemento</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="document" name="document"  value="" class="form-control" required="rerquired">
-                                        <small class="form-text text-muted">Documento do usuário</small>
+                                        <input type="text" id="complement" name="complement"  value="" class="form-control">
+                                        <small class="form-text text-muted">Complemento do endereço do usuário</small>
                                     </div>
                                 </div>
 
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="ddd" class=" form-control-label">DDD</label>
+                                        <label for="neighborhood" class=" form-control-label">Bairro</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="ddd" name="ddd"  value="" class="form-control">
-                                        <small class="form-text text-muted">DDD do usuário</small>
+                                        <input type="text" id="neighborhood" name="neighborhood"  value="" class="form-control" required="required">
+                                        <small class="form-text text-muted">Bairro do usuário</small>
                                     </div>
                                 </div>
 
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="phone" class=" form-control-label">Fone</label>
+                                        <label for="postcode" class=" form-control-label"><span style="color:red;">*</span>CEP</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="phone" name="phone" pattern="[0-9]{4}-[0-9]{4,5}" value="" class="form-control">
-                                        <small class="form-text text-muted">Fone do usuário</small>
+                                        <input type="text" id="postcode" name="postcode"  value="" class="form-control" required="required">
+                                        <small class="form-text text-muted">CEP do usuário</small>
                                     </div>
                                 </div>
 
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="image" class=" form-control-label">Foto</label>
+                                        <label for="city" class=" form-control-label">Cidade</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="file" id="image" name="image" class="form-control-file">
-                                        <small class="form-text text-muted">Foto do usuário</small>
+                                        <input type="text" id="city" name="city" value="" class="form-control" >
+                                        <small class="form-text text-muted">Cidade do usuário</small>
                                     </div>
                                 </div>
 
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="password" class=" form-control-label"><span style="color:red;">*</span>Senha</label>
+                                        <label for="state" class=" form-control-label">Estado</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="password" id="password" name="password"  value="" class="form-control" required="rerquired">
-                                        <small class="form-text text-muted">Senha do usuário</small>
+                                        <input type="text" id="state" name="state" maxlength="2" style="width:100px;" value="" class="form-control" >
+                                        <small class="form-text text-muted">Estado do usuário</small>
                                     </div>
                                 </div>
 
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="confirm_password" class=" form-control-label"><span style="color:red;">*</span>Confirmar Senha</label>
+                                        <label for="country" class=" form-control-label">País</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="password" id="confirm_password" name="confirm_password"  value="" class="form-control" required="rerquired">
-                                        <small class="form-text text-muted">Confirma senha do usuário</small>
+                                        <input type="text" id="country" name="country"  value="" class="form-control" >
+                                        <small class="form-text text-muted">País do usuário</small>
                                     </div>
                                 </div>
 
                                 <div class="card-footer">
-                                    <button type="submit" name="cmVnaXN0ZXJBY2NvdW50" class="btn btn-primary btn-sm">
+                                    <button type="submit" name="bmV3QWRkcmVzcw==" class="btn btn-primary btn-sm">
                                         <i class="fa fa-dot-circle-o"></i> Enviar
                                     </button>
                                     <button type="reset" class="btn btn-danger btn-sm">
                                         <i class="fa fa-ban"></i> Limpar
                                     </button>
-                                    <script>
-                                        function confirmPassword()
-                                        {
-                                            if($("#password").val() != $("#confirm_password").val()){
-                                                alert('A senha e a confirmação de senha são diferentes.');
-                                                return false;
-                                            }
-                                            return true;
-                                        }
-                                    </script>
                                 </div>
                             </form>
                         </div>

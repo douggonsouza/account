@@ -4,10 +4,9 @@
 
     use driver\control\action;
     use driver\helper\html;
-    use alerts\alerts\alerts;
-    use account\common\managments\upload;
     use account\common\models\users;
-    use permission\common\models\profiles;
+    use account\common\models\addresses;
+    use alerts\alerts\alerts;
 
     class addressDelete extends action
     {
@@ -21,7 +20,7 @@
          */
         public function main(array $info)
         {
-            // self::setLayout(self::getHeartwoodLayouts().'/cooladmin1.phtml');
+            self::setLayout(self::getHeartwoodLayouts().'/cooladmin1.phtml');
 
             $this->param('html', new html());
             $this->param('profiles', (new profiles())->dicionary());

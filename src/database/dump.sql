@@ -24,6 +24,7 @@ CREATE TABLE `users` (
 CREATE TABLE `addresses` (
   `address_id` int(11) NOT NULL AUTO_INCREMENT,
   `type` enum('all','billing','shipping') NOT NULL DEFAULT 'all',
+  `default` tinyint(1) DEFAULT '1',
   `user_id` int(11) NOT NULL,
   `company` varchar(120) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
@@ -39,6 +40,5 @@ CREATE TABLE `addresses` (
   KEY `fk_addresses_1_idx` (`user_id`),
   CONSTRAINT `fk_addresses_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 
 

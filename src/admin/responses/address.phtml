@@ -6,7 +6,7 @@
                         <div class="card-body">
                             <div class="row form-group">
                                 <div class="col-2">
-                                    <a target="_blank" href="<?= _root ?>/admin/accounts/accountNew" class="btn btn-sm btn-outline-primary">Novo</a>
+                                    <a target="_blank" href="<?= _root ?>/admin/accounts/addressNew" class="btn btn-sm btn-outline-primary">Novo</a>
                                 </div>
                             </div>
                         </div>
@@ -14,26 +14,26 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <strong>Lista</strong><small> contas</small>
+                            <strong>Lista</strong><small> endereços</small>
                         </div>
                         <div class="card-body card-block">
                             <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                                 <div class="row form-group">
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="vat" class=" form-control-label">Nome</label>
-                                            <input type="text" id="name" name="name" placeholder="" class="form-control">
+                                            <label for="user_id" class=" form-control-label">Usuário</label>
+                                            <input type="text" id="user_id" name="user_id" placeholder="" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="vat" class=" form-control-label">E-mail</label>
-                                            <input type="text" id="email" name="email" placeholder="" class="form-control">
+                                            <label for="address" class=" form-control-label">Endereço</label>
+                                            <input type="text" id="address" name="address" placeholder="" class="form-control">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <button type="submit" name="c2VhcmNoQWNjb3VudA==" class="btn btn-primary btn-sm">
+                                    <button type="submit" name="c2VhcmNoQWRkcmVzc2Vz" class="btn btn-primary btn-sm">
                                         <i class="fa fa-dot-circle-o"></i> Buscar
                                     </button>
                                     <button type="reset" class="btn btn-danger btn-sm">
@@ -50,9 +50,10 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Name</th>
-                                    <th>E-mail</th>
-                                    <th>Perfil</th>
+                                    <th>Usuário</th>
+                                    <th>Endereço</th>
+                                    <th>Tipo</th>
+                                    <th>Principal</th>
                                     <th>Delete</th>
                                 </tr>
                             </thead>
@@ -62,11 +63,12 @@
                                         while(!$registros->isEof()){
                                 ?>
                                 <tr>
-                                    <td><a href="<?= _root ?>/admin/accounts/account/<?= $registros->getField('user_id') ?>"><?= $registros->getField('user_id'); ?></a></td>
-                                    <td><?= $registros->getField('name') ?></td>
-                                    <td><?= $registros->getField('email') ?></td>
-                                    <td><?= $registros->getField('profile_label') ?></td>
-                                    <td><a class="btn btn-sm btn-danger" href="<?= _root ?>/admin/accounts/accountDelete/<?= $registros->getField('user_id') ?>" target="_blank">Delete</a></td>
+                                    <td><a href="<?= _root ?>/admin/accounts/address/<?= $registros->getField('address_id') ?>"><?= $registros->getField('address_id'); ?></a></td>
+                                    <td><?= $registros->getField('user_label'); ?></td>
+                                    <td><?= $registros->getField('address'); ?></td>
+                                    <td><?= $addresses::LIST_TYPE[$registros->getField('type')]; ?></td>
+                                    <td><?= $addresses>>LIST_DEFAULT[$registros->getField('default')]; ?></td>
+                                    <td><a class="btn btn-sm btn-danger" href="<?= _root ?>/admin/accounts/addressDelete/<?= $registros->getField('address_id') ?>" target="_blank">Delete</a></td>
                                 </tr>
                                 <?php
                                             $registros->next();
@@ -85,7 +87,7 @@
                         <div class="card-body">
                             <div class="row form-group">
                                 <div class="col-2">
-                                    <a target="_blank" href="<?= _root ?>/admin/accounts/accountNew" class="btn btn-sm btn-outline-primary">Novo</a>
+                                    <a target="_blank" href="<?= _root ?>/admin/accounts/addressNew" class="btn btn-sm btn-outline-primary">Novo</a>
                                 </div>
                             </div>
                         </div>
