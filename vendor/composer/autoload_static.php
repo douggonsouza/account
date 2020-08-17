@@ -31,6 +31,7 @@ class ComposerStaticInitf6321e2c00adb3a3b997acf43160023f
         'account\\admin\\controllers\\addressUpdate' => __DIR__ . '/../..' . '/src/admin/controllers/addressUpdate.php',
         'account\\admin\\controllers\\headerAccount' => __DIR__ . '/../..' . '/src/admin/controllers/headerAccount.php',
         'account\\admin\\controllers\\headerDesktopAccount' => __DIR__ . '/../..' . '/src/admin/controllers/headerDesktopAccount.php',
+        'account\\admin\\controllers\\headerMobileAccount' => __DIR__ . '/../..' . '/src/admin/controllers/headerMobileAccount.php',
         'account\\admin\\controllers\\login' => __DIR__ . '/../..' . '/src/admin/controllers/login.php',
         'account\\admin\\controllers\\logout' => __DIR__ . '/../..' . '/src/admin/controllers/logout.php',
         'account\\admin\\controllers\\setting' => __DIR__ . '/../..' . '/src/admin/controllers/setting.php',

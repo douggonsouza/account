@@ -16,6 +16,7 @@ return array(
     'account\\admin\\controllers\\addressUpdate' => $baseDir . '/src/admin/controllers/addressUpdate.php',
     'account\\admin\\controllers\\headerAccount' => $baseDir . '/src/admin/controllers/headerAccount.php',
     'account\\admin\\controllers\\headerDesktopAccount' => $baseDir . '/src/admin/controllers/headerDesktopAccount.php',
+    'account\\admin\\controllers\\headerMobileAccount' => $baseDir . '/src/admin/controllers/headerMobileAccount.php',
     'account\\admin\\controllers\\login' => $baseDir . '/src/admin/controllers/login.php',
     'account\\admin\\controllers\\logout' => $baseDir . '/src/admin/controllers/logout.php',
     'account\\admin\\controllers\\setting' => $baseDir . '/src/admin/controllers/setting.php',
