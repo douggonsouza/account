@@ -1,6 +1,6 @@
 
-DROP TABLE IF EXISTS `users`;
 DROP TABLE IF EXISTS `addresses`;
+DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -40,5 +40,3 @@ CREATE TABLE `addresses` (
   KEY `fk_addresses_1_idx` (`user_id`),
   CONSTRAINT `fk_addresses_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
